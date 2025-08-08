@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: bankapp
-        image: adminsneha/bankapp:v16
+        image: adminsneha/bankapp:v17
         ports:
         - containerPort: 8080
         env:
