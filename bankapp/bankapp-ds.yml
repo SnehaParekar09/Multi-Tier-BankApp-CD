@@ -21,13 +21,11 @@ spec:
       labels:
         app: bankapp
       annotations:
-        vault.hashicorp.com/agent-inject: "true"
-        vault.hashicorp.com/role: "noteapp"
-        vault.hashicorp.com/agent-inject-secret-mysql__connectionstring: "secret/data/noteapp"
         vault.hashicorp.com/agent-inject-template-mysql__connectionstring: |
           {{- with secret "secret/data/noteapp" -}}
           {{ .Data.data.mongodb__connectionstring }}
           {{- end }}
+
     spec:
       containers:
       - name: bankapp
@@ -36,7 +34,7 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:mysql://mysql-service:3306/bankappdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+          value: jdbc:mysql://mysql:3306/bankappdb?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
         - name: SPRING_DATASOURCE_USERNAME
           value: root
         - name: SPRING_DATASOURCE_PASSWORD
