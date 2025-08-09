@@ -20,7 +20,7 @@ spec:
     metadata:
       labels:
         app: bankapp
-       annotations:
+      annotations:
         vault.hashicorp.com/agent-inject: "true"
         vault.hashicorp.com/role: "noteapp"
         vault.hashicorp.com/agent-inject-secret-mysql__connectionstring: "secret/data/noteapp"
